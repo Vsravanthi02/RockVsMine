@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Add CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white; /* Text color on top of the background image */
+        }
+        h1 {
+            color: hwb(190 92% 3% / 0.994);
+            font-size: 5em; /* Larger font size */
+        }
+        p {
+            font-size: 4em; /* Larger font size */
+        }
+    </style>
+    {% if prediction_label == 'Rock' %}
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='rock.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    {% elif prediction_label == 'Mine' %}
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='mineral.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    {% endif %}
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <p>The object is a {{ prediction_label }}</p>
+    </div>
+</body>
+</html>
